@@ -9,6 +9,7 @@ class ArticlesController < ApplicationController
     end
 
     def new
+        @article = Article.new
     end
 
     def edit
@@ -27,6 +28,7 @@ class ArticlesController < ApplicationController
     def create
         # render plain: params[:article]
         @article = Article.new(article_params)
+        @article.user = User.first
         if @article.save
             # render plain: @article.inspect
             flash[:notice] = "Article was created successfully"
